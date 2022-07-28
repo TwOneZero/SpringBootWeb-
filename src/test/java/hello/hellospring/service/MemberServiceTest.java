@@ -1,7 +1,7 @@
 package hello.hellospring.service;
 
 import hello.hellospring.domain.Member;
-import hello.hellospring.repository.MemoryMemberReposiitory;
+import hello.hellospring.repository.MemoryMemberRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,11 +13,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class MemberServiceTest {
 
     MemberService memberService;
-    MemoryMemberReposiitory memberRepository;
+    MemoryMemberRepository memberRepository;
 
+
+
+    /* 테스트가 서로 영향이 없도록 새로운 객체를 주입
+    * dependency injection ( DI ) */
     @BeforeEach
     public void beforeEach(){
-        memberRepository = new MemoryMemberReposiitory();
+        memberRepository = new MemoryMemberRepository();
         memberService = new MemberService(memberRepository);
     }
 
